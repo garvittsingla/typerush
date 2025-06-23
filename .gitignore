@@ -1,0 +1,4 @@
+frontend/node_modules
+wsbackend/node_modules
+.env
+wsbackend/dist
