@@ -1,4 +1,4 @@
-export const WSURL = "ws://localhost:8080"
+export const WSURL = "https://typerush-dqce.onrender.com/"
 export const INIT = "init_game"
 export const PROGRESS = "progress_game"
 export const OTHERPLAYERLEFT= "otherplayerleft"
