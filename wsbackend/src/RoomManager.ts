@@ -1,6 +1,6 @@
 import { WebSocket } from "ws";
 import { Room } from "./Room";
-import { INIT, PROGRESS } from "./types";
+import { INIT, OTHERPLAYERLEFT, PROGRESS } from "./types";
 
 interface UsersInWaitingRoom{
     ws:WebSocket
@@ -25,10 +25,22 @@ export class RoomManager{
 
     }
     removeuser(socket:WebSocket){
-        this.usersinwaitingroom = this.usersinwaitingroom.filter(r => r.ws !== socket);
-        this.rooms = this.rooms.filter(r => (r.player1 !== socket && r.player2 !== socket))
+       
+       const game = this.rooms.find(x=> x.player1 === socket || x.player2 === socket )
+       if(game?.player1 === socket){
+        game.player2.send(JSON.stringify({
+            type:OTHERPLAYERLEFT
+        }))
+       }else{
+        game?.player1.send(JSON.stringify({
+            type:OTHERPLAYERLEFT
+        }))
+       }
         console.log("player is waiting room" , this.usersinwaitingroom)
         console.log("player is room" , this.rooms)
+        console.log("user left")
+         this.usersinwaitingroom = this.usersinwaitingroom.filter(r => r.ws !== socket);
+        this.rooms = this.rooms.filter(r => (r.player1 !== socket && r.player2 !== socket))
 
     }
 
@@ -58,7 +70,12 @@ export class RoomManager{
                 const game = this.rooms.find(x=> x.player1 === socket || x.player2 === socket )
 
                 if (game){
-                    game.sendTyping(socket,parseInt(message.wpm),parseInt(message.progress),parseInt(message.currentposition))
+                    game.sendTyping(
+                        socket,
+                        parseInt(message.payload.currentposition), // should be first param after socket
+                        parseInt(message.payload.wpm),            // should be second
+                        parseInt(message.payload.progress)        // should be third
+                    );
                 }
             }   
             

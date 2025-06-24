@@ -4,7 +4,7 @@ let randomstring = "";
 
 export function generateRandomString(){
 
-    for (let i = 0 ; i < words.length ; i++){
+    for (let i = 0 ; i < 50 ; i++){
         randomstring += words[Math.floor(Math.random() * words.length)] + " ";
     }
     return randomstring
