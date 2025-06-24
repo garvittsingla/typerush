@@ -46,7 +46,8 @@ export class RoomManager{
 
     private addHandler(socket:WebSocket){
         socket.on("message",async(data)=>{
-            const message = JSON.parse(data.toString());
+            try {
+                const message = JSON.parse(data.toString());
             
 
             if(message.type === INIT){
@@ -78,6 +79,9 @@ export class RoomManager{
                     );
                 }
             }   
+            } catch (error) {
+                console.log(error)
+            }
             
 
         })
