@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Users, Plus, ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { Ring2 } from 'ldrs/react'
 import 'ldrs/react/Ring2.css'
