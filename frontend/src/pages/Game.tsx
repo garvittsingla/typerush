@@ -36,7 +36,7 @@ const Game = () => {
       
       <Navbar></Navbar>
     
-      <div className='w-full h-3/4 flex items-center justify-center text-white font-mono text-2xl'>Loading...</div>
+      <div className='w-full h-3/4 flex items-center justify-center text-white font-mono text-2xl'>Loading...<br/> Server Starting...</div>
     </div>
     }
 

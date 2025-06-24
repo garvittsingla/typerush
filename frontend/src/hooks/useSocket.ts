@@ -93,7 +93,7 @@ export function useSocket() {
         console.error('Error parsing WebSocket message:', error);
     }
 };
-    }, [currentRoomId, setText, setisconnected, setProgress, setWpm, setCurrentPosition]);
+    }, [currentRoomId]);
 
     useEffect(() => {
         connect();
