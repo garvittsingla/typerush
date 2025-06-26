@@ -5,7 +5,19 @@
     /* In your global CSS file */
     @layer base {
       :root {
-        --color-primary: #1A1A1A;
+        --color-primary: #101820;
         --color-secondary: #CF6BDD;
       }
     }
+
+    @keyframes travel {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
