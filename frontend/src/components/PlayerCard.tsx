@@ -11,9 +11,9 @@ const PlayerCard = () => {
     const counter = useCounter();
   return (
     <div className='w-full h-32 bg-red900 flex items-center justify-center gap-30'>
-        <Card color='mine' wpm={mywpm} progress={myprogress}/>
+        <Card color='mine' wpm={mywpm} progress={myprogress} isPlayer={true}/>
         <div className='text-white font-6xl font-[mono]'>{counter}</div>
-        <Card color='other' wpm={wpm} progress={progress}/>
+        <Card color='other' wpm={wpm} progress={progress} isPlayer={false}/>
     </div>
   )
 }

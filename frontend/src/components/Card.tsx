@@ -1,38 +1,54 @@
-import React from 'react'
-import { FiUser } from 'react-icons/fi';
+import React from 'react';
 
-interface CardProps{
-    color:string
-    wpm:number;
-    progress:number;
-
+interface CardProps {
+  color: string;
+  wpm: number;
+  progress: number;
+  isPlayer?: boolean;
 }
 
 const colors: { [key: string]: string } = {
-  "mine": "bg-[var(--color-secondary)]",
-  "other":"bg-green-500"
-}
-const Card = (props:CardProps) => {
+  "mine": "bg-purple-700",
+  "other": "bg-green-600",
+  "purple": "bg-purple-700",
+  "green": "bg-green-600"
+};
 
+const Card = (props: CardProps) => {
   return (
-      <div className="relative">
-        <div className={`w-56 h-30 py-2 ${colors[props.color]} rounded-lg border-2 border-white absolute top-2 left-2`}></div>
+    <div className="relative inline-block">
+      <div className={`w-48 h-32 ${colors[props.color]} rounded-lg absolute top-1 left-1 opacity-60`}></div>
+      
+      <div className={`w-48 h-32 ${colors[props.color]} rounded-lg relative z-10 border-2 border-gray-300 flex flex-col overflow-hidden`}>
         
-        <div className={`w-55 h-29 ${colors[props.color]}  border-2 border-white rounded-xl relative z-10 shadow-lg flex flex-col `}>
-          <div className=" h-[39%] w-full py-2  flex flex-col  border-b-2 border-white">
-            <h2 className="text-3xl font-bold text-white font-[vt323] flex"><FiUser/>{props.color == "mine" ? "You" : "Other Player"}
-              
-            </h2>
+        <div className="bg-black bg-opacity-20 px-3 py-1 border-b border-gray-300">
+          <div className="text-pink-300 text-sm font-mono font-bold tracking-wider">
+            {props.isPlayer !== false ? "YOU" : "PLAYER"}
           </div>
-            <div className='w-full h-[1px] mt-2 bg-white'></div>
-            <div className='w-full flex items-center h-2/3 font-medium text-2xl text-white font-[vt323] justify-center gap-3'>
-                <div className='ml-2'>WPM: {props.wpm}</div>
-                <div className=''>Progress: {props.progress}</div>
-            </div>
+        </div>
+        
+        <div className="flex-1 flex flex-col justify-center items-center px-2">
+          <div className="text-pink-300 text-4xl font-mono font-bold leading-none mb-1">
+            {props.wpm}
+          </div>
+          <div className="text-pink-300 text-xs font-mono font-bold tracking-widest">
+            WPM
+          </div>
+        </div>
+        
+        <div className="bg-black bg-opacity-20 px-3 py-1 border-t border-gray-300">
+          <div className="flex justify-between items-center">
+            <span className="text-pink-300 text-xs font-mono font-bold tracking-wider">
+              HISTORY
+            </span>
+            <span className="text-pink-300 text-xs font-mono font-bold">
+              {props.progress}
+            </span>
+          </div>
         </div>
       </div>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default Card
+export default Card;
